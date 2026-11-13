@@ -1,0 +1,14 @@
+# File hasil compile (Mac & Windows)
+program
+program.exe
+main
+main.exe
+*.exe
+*.o
+*.out
+
+# File sistem bawaan macOS
+.DS_Store
+
+# Folder konfigurasi lokal VS Code
+.vscode/
