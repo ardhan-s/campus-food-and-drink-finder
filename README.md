@@ -1,96 +1,85 @@
-# Campus Food & Drink Finder (Kelompok 2 - KOM A)
+# Campus Food & Drink Finder
 
-Program berbasis console C++ untuk membantu mahasiswa mencari, memfilter, dan menganalisis pilihan makanan/minuman di sekitar kampus berdasarkan harga, kategori, rating, dan budget.
+![Language](https://img.shields.io/badge/Language-C%2B%2B17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-2EA44F?style=for-the-badge)
+![Interface](https://img.shields.io/badge/Interface-CLI%20Terminal-orange?style=for-the-badge)
 
-> **Catatan Penting:** File `test.cpp` hanya digunakan untuk pengujian lokal terpisah. Jangan masukkan fungsi `int main()` tambahan saat menggabungkan ke program utama.
-
----
-
-## Panduan Setup Awal (Wajib Dilakukan Sekali)
-
-### 1. Pastikan Git & Compiler C++ (`g++`) Terpasang
-* **Windows:** Install [Git for Windows](https://git-scm.com/downloads) dan MinGW (`g++`). Cek di Command Prompt / Terminal VS Code dengan mengetik:
-  ```bash
-  git --version
-  g++ --version
-  ```
-* **macOS:** Buka Terminal dan jalankan `xcode-select --install`.
-
-### 2. Atur Identitas Git di Laptop Masing-Masing
-Jalankan perintah ini di Terminal (ganti dengan nama dan email akun GitHub kalian):
-```bash
-git config --global user.name "Nama Lengkap Kamu"
-git config --global user.email "email_github_kamu@gmail.com"
-```
-
-### 3. Download Proyek dari GitHub (`Clone`)
-Buka Terminal di folder tempat kalian biasa menyimpan tugas kuliah, lalu jalankan:
-```bash
-git clone [https://github.com/ardhan-s/campus-food-and-drink-finder.git](https://github.com/ardhan-s/campus-food-and-drink-finder.git)
-cd campus-food-and-drink-finder
-```
+> **Bingung mau makan apa hari ini di kampus? Atau dompet lagi mode hemat di akhir bulan?**
+> 
+> **Campus Food & Drink Finder** hadir sebagai solusi praktis berbasis konsol (*Command Line Interface*) yang dibangun menggunakan **C++** untuk membantu mahasiswa menemukan, membandingkan, hingga menghitung estimasi jajanan dan makanan terbaik di sekitar kampus.
 
 ---
 
-## Cara Compile & Menjalankan Program di Laptop Lokal
+## Fitur Utama
 
-Jangan hanya menekan tombol *Run* bawaan editor karena program ini terdiri dari banyak file `.cpp`. Buka Terminal di VS Code (`Ctrl + ~`), lalu ketik:
+1. **Tambah Menu (`addData`)**
+   * Punya rekomendasi tempat makan atau minuman baru di sekitar kampus? Tambahkan langsung lengkap dengan ID, Nama, Kategori, Harga, dan Rating.
+   * Data baru otomatis tersimpan secara permanen sehingga tidak akan hilang saat aplikasi ditutup.
 
-### Untuk Pengguna macOS / Linux:
-```bash
-g++ -std=c++17 main.cpp menu.cpp recursion.cpp searching.cpp sorting.cpp -o program
-./program
-```
+2. **Tampilkan Semua Menu (`displayData`)**
+   * Lihat seluruh katalog kuliner kampus dalam tampilan tabel terminal yang rapi, sejajar, dan berwarna.
+   * Dilengkapi pelabelan harga otomatis (*Budget*, *Medium*, hingga *Premium*) untuk memudahkan pemilihan sesuai kantong.
 
-### Untuk Pengguna Windows:
-```bash
-g++ -std=c++17 main.cpp menu.cpp recursion.cpp searching.cpp sorting.cpp -o program.exe
-program.exe
+3. **Ringkasan Menu (`calculateSummary`)**
+   * Dapatkan gambaran cepat mengenai total variasi menu yang tersedia, rata-rata harga, rata-rata rating, serta rekomendasi menu paling ramah di kantong hingga yang paling mahal.
+
+4. **Urutkan Menu (`sortByHarga` & `sortByRating`)**
+   * Urutkan daftar menu berdasarkan **Harga** (dari yang paling murah atau paling mahal) maupun **Rating** (dari yang paling favorit) menggunakan algoritma **Bubble Sort**.
+
+5. **Cari Menu (`searchByID`, `searchByNama`, `searchByKategori`)**
+   * Temukan menu incaranmu secara instan berdasarkan **ID**, **Nama Menu**, atau **Kategori** (*Meal*, *Drink*, *Coffee*, *Snack*) dengan metode **Sequential Search**.
+
+6. **Hitung Total Pilihan Menu (`hitungTotalPilihan`)**
+   * Simulasikan pesananmu dengan memilih beberapa menu sekaligus, lalu biarkan program menghitung total tagihan secara otomatis menggunakan pendekatan fungsi **Rekursif** (`hitungTotalRekursif`).
+
+7. **What can I eat with my budget? (`filterByBudget`)**
+   * Fitur penyelamat tanggal tua. Cukup masukkan nominal uang yang kamu miliki, dan aplikasi akan langsung menyaring daftar makanan serta minuman yang sesuai dengan *budget*-mu.
+
+8. **Penyimpanan Data Lokal (`loadData` & `saveData`)**
+   * Terintegrasi dengan sistem manajemen file lokal (`data_menu.txt`) menggunakan `<fstream>` sehingga seluruh perubahan data selalu aman dan tersinkronisasi.
+
+---
+
+## Struktur Proyek
+
+```text
+Campus Food and Drink Finder/
+├── main.cpp          # Pusat kendali program dan antarmuka menu utama
+├── struct.hpp        # Definisi struktur data Menu dan kapasitas maksimal
+├── menu.hpp          # Deklarasi fungsi manajemen menu & penyimpanan file
+├── menu.cpp          # Implementasi tambah, tampil, ringkasan, dan load/save data
+├── searching.hpp     # Deklarasi fungsi pencarian dan filter budget
+├── searching.cpp     # Implementasi pencarian (ID/Nama/Kategori) & filter budget
+├── sorting.hpp       # Deklarasi fungsi pengurutan data
+├── sorting.cpp       # Implementasi Bubble Sort (Harga & Rating)
+├── recursion.hpp     # Deklarasi fungsi perhitungan total rekursif
+├── recursion.cpp     # Implementasi kalkulasi total pesanan secara rekursif
+├── data_menu.txt     # Database lokal penyimpanan daftar menu (otomatis dibuat)
+└── README.md         # Dokumentasi proyek
 ```
 
 ---
 
-## Alur Kerja Harian di GitHub (Wajib Diikuti!)
+## Cara Kompilasi & Menjalankan Program
 
-Agar kode tidak saling menimpa, **dilarang keras melakukan `git push` langsung ke branch `main`**. Ikuti langkah ini setiap kali mau mulai *ngoding*:
+Pastikan *compiler* `g++` (dengan dukungan standar **C++17**) sudah terpasang di perangkat Anda (**macOS**, **Linux**, maupun **Windows**).
 
-### Langkah 1: Tarik Update Terbaru dari `main`
-Sebelum mulai menulis kode, pastikan laptopmu sudah memiliki versi kode terbaru dari teman satu tim:
-```bash
-git checkout main
-git pull origin main
-```
+1. **Buka terminal** dan masuk ke direktori proyek:
+   ```bash
+   cd "Campus Food and Drink Finder"
+   ```
 
-### Langkah 2: Pindah / Buat Branch Khusus Fitur Kamu
-Buat *branch* baru sesuai bagianmu (contoh: `fitur-sorting`, `fitur-searching`, `fitur-menu`, `fitur-recursion`):
-```bash
-git checkout -b fitur-nama-bagianmu
-```
-*(Jika branch sudah pernah dibuat sebelumnya, cukup ketik `git checkout fitur-nama-bagianmu`).*
+2. **Compile seluruh file sumber:**
+   ```bash
+   g++ -std=c++17 main.cpp menu.cpp recursion.cpp searching.cpp sorting.cpp -o program
+   ```
 
-### Langkah 3: Kerjakan Kode & Tes Compile
-1. Buka file `.cpp` (dan `.hpp` jika perlu) yang menjadi tanggung jawabmu.
-2. Tulis kodenya, pastikan tidak mengubah `struct Menu` di `struct.hpp` tanpa kesepakatan grup.
-3. **Wajib compile dan jalankan program** di terminal untuk memastikan tidak ada error sebelum di-upload.
-
-### Langkah 4: Simpan & Upload ke GitHub (`Add`, `Commit`, `Push`)
-Jika kode sudah aman dan berjalan lancar:
-```bash
-git add .
-git commit -m "Menambahkan fitur [sebutkan fitur yang dikerjakan]"
-git push origin fitur-nama-bagianmu
-```
-
-### Langkah 5: Buat Pull Request (PR) di Browser
-1. Buka halaman repository GitHub kelompok (`https://github.com/ardhan-s/campus-food-and-drink-finder`) di browser.
-2. Klik tombol hijau **Compare & pull request** yang muncul di bagian atas.
-3. Tulis keterangan singkat fitur yang sudah selesai, lalu klik **Create pull request**.
-4. Beri tahu di grup chat kelompok agar Coordinator mereview dan melakukan **Merge pull request** ke `main`.
-
----
-
-## Aturan Penulisan Kode & Ketentuan Tugas
-1. **Struktur Data:** Menggunakan `struct Menu` dari `struct.hpp` dengan kapasitas maksimal `MAX_DATA = 100`.
-2. **Dilarang Memakai STL:** Implementasi *sorting* (`sortByHarga`, `sortByRating`) dan *searching* (`searchByID`, `searchByNama`, `searchByKategori`) wajib ditulis manual menggunakan *looping* dan percabangan (tidak boleh memakai `std::sort` atau `std::find`).
-3. **Dokumentasi Test Case:** Setiap anggota diharapkan menyiapkan minimal 1–2 skenario uji coba (*input* & *output*, termasuk *edge case* seperti data kosong atau budget kurang) untuk bahan laporan PDF.
-4. **GUNAKAN KODE SESIMPLE SIMPLENYA!!!**
+3. **Jalankan aplikasi:**
+   * **macOS / Linux:**
+     ```bash
+     ./program
+     ```
+   * **Windows (CMD / PowerShell):**
+     ```cmd
+     program.exe
+     ```
