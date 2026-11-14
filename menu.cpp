@@ -70,14 +70,18 @@ void displayData(const Menu daftar[], int jumlahData) {
     }
 
     cout << "\033[1;33m" << left << setw(6) << "ID" << setw(24) << "Nama Menu" << setw(12) << "Kategori" << setw(12) << "Harga" << setw(9) << "Rating" << "Label\033[0m\n";
-    cout << "\033[90m──────────────────────────────────────────────────────────────────────\033[0m\n";
+    cout << "\033[90m----------------------------------------------------------------------\033[0m\n";
 
     for (int i = 0; i < jumlahData; i++) {
         string label = getPriceLabel(daftar[i].harga);
         string warnaLabel = "\033[32m";
-        if (label == "Medium") warnaLabel = "\033[33m";
-        else if (label == "Premium") warnaLabel = "\033[31m";
-
+        if (label == "Medium") {
+            warnaLabel = "\033[33m";
+        }    
+        else if (label == "Premium") {
+            warnaLabel = "\033[31m";
+        }
+        
         cout << left << setw(6) << daftar[i].id << setw(24) << daftar[i].nama << setw(12) << daftar[i].kategori << "Rp" << setw(10) << daftar[i].harga << setw(9) << daftar[i].rating << warnaLabel << label << "\033[0m\n";
     }
 }
