@@ -21,7 +21,7 @@ void searchByID(const Menu daftar[], int jumlahData, int targetID){
 void searchByNama(const Menu daftar[], int jumlahData, string keyword){
     bool found = false;
     for ( int i = 0; i < jumlahData; i++ ) {
-        if ( daftar[i].nama.find(keyword) != string::npos ) {
+        if (mengandung(daftar[i].nama, keyword)) {
             if (!found) {
                 cout << "Menu ditemukan: " << endl;
             }
