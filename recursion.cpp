@@ -16,11 +16,6 @@ static int readInt(const string& prompt, int minVal, int maxVal){ //Fungsi ngamb
     }
 }
 
-int hitungTotalRekursif(const Menu daftar[], int n){
-    if (n == 0) return 0;  // Base case
-    return daftar[n - 1].harga + hitungTotalRekursif(daftar, n - 1);  // Rekursif untuk menghitung total harga dari array
-}
-
 void hitungTotalPilihan(const Menu daftar[], int jumlahData){ //Fungsi buat menu yang udah dipilih
     if (jumlahData == 0){
         cout << "Belum ada data.\n";
@@ -37,7 +32,8 @@ void hitungTotalPilihan(const Menu daftar[], int jumlahData){ //Fungsi buat menu
         int idx = -1;  // Mencari menu bersadarkan ID
         for (int i = 0; i < jumlahData; i++){
             if (daftar[i].id == id){
-                idx = i; break;
+                idx = i; 
+                break;
             }
         }
         if (idx == -1){
@@ -48,7 +44,18 @@ void hitungTotalPilihan(const Menu daftar[], int jumlahData){ //Fungsi buat menu
     }
 
     cout << "\nMenu yang dipilih:\n";
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++){
         cout << "- " << terpilih[i].nama << " (Rp" << terpilih[i].harga << ")\n";
+    }
     cout << "Total Harga: Rp" << hitungTotalRekursif(terpilih, n) << "\n";
 }
+
+int hitungTotalRekursif(const Menu daftar[], int n){
+    if (n == 0) {
+        return 0; // Base case
+    }  
+
+    return daftar[n - 1].harga + hitungTotalRekursif(daftar, n - 1);  // Rekursif untuk menghitung total harga dari array
+}
+
+

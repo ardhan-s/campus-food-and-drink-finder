@@ -5,12 +5,14 @@ using namespace std;
 
 // Menentukan label harga dengan IF
 string getPriceLabel(int harga) {
-    if (harga <= 10000) {
+    if (harga >= 0 && harga < 13000) {
         return "Budget";
-    } else if (harga <= 20000) {
+    } else if (harga >= 13000 && harga <= 28000) {
         return "Medium";
-    } else {
+    } else if (harga > 28000) {
         return "Premium";
+    } else{
+        return "Harga tidak bisa 0!";
     }
 }
 
@@ -67,12 +69,7 @@ void displayData(const Menu daftar[], int jumlahData) {
 
     cout << "ID\tNama\t\tKategori\tHarga\tRating\tLabel\n";
     for (int i = 0; i < jumlahData; i++) {
-        cout << daftar[i].id << "\t"
-             << daftar[i].nama << "\t"
-             << daftar[i].kategori << "\t\t"
-             << daftar[i].harga << "\t"
-             << daftar[i].rating << "\t"
-             << getPriceLabel(daftar[i].harga) << "\n";
+        cout << daftar[i].id << "\t" << daftar[i].nama << "\t" << daftar[i].kategori << "\t\t" << daftar[i].harga << "\t" << daftar[i].rating << "\t" << getPriceLabel(daftar[i].harga) << "\n";
     }
 }
 
@@ -102,8 +99,6 @@ void calculateSummary(const Menu daftar[], int jumlahData) {
     cout << "Jumlah menu      : " << jumlahData << "\n";
     cout << "Rata-rata harga  : Rp" << totalHarga / jumlahData << "\n";
     cout << "Rata-rata rating : " << totalRating / jumlahData << "\n";
-    cout << "Termurah         : " << daftar[idxMurah].nama
-         << " (Rp" << daftar[idxMurah].harga << ")\n";
-    cout << "Termahal         : " << daftar[idxMahal].nama
-         << " (Rp" << daftar[idxMahal].harga << ")\n";
+    cout << "Termurah         : " << daftar[idxMurah].nama << " (Rp" << daftar[idxMurah].harga << ")\n";
+    cout << "Termahal         : " << daftar[idxMahal].nama << " (Rp" << daftar[idxMahal].harga << ")\n";
 }
