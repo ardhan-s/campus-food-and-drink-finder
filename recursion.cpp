@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "recursion.hpp"
 using namespace std;
 
@@ -22,12 +23,12 @@ void hitungTotalPilihan(const Menu daftar[], int jumlahData){ //Fungsi buat menu
         return;
     }
 
-    int n = readInt("Masukkan jumlah menu yang ingin dihitung total harganya: ", 1, jumlahData);
+    int n = readInt("Masukkan banyak menu yang ingin kamu pilih: ", 1, jumlahData);
     Menu terpilih[maxData];
     int jumlahTerpilih = 0;  // Counter untuk menu yang terpilih
 
     while(jumlahTerpilih < n){
-        int id = readInt("Masukkan ID menu ke-" + to_string(jumlahTerpilih + 1) + ":", 1, maxData);
+        int id = readInt("Masukkan ID menu ke-" + to_string(jumlahTerpilih + 1) + ": ", 1, maxData);
         
         int idx = -1;  // Mencari menu bersadarkan ID
         for (int i = 0; i < jumlahData; i++){
@@ -43,11 +44,11 @@ void hitungTotalPilihan(const Menu daftar[], int jumlahData){ //Fungsi buat menu
         terpilih[jumlahTerpilih++] = daftar[idx];  // Menyimpan menu yang dipilih ke listKeranjang
     }
 
-    cout << "\nMenu yang dipilih:\n";
+    cout << "\n\033[1;36m-- TOTAL MENU YANG DIPILIH -----------------------------------\033[0m\n";
     for (int i = 0; i < n; i++){
         cout << "- " << terpilih[i].nama << " (Rp" << terpilih[i].harga << ")\n";
     }
-    cout << "Total Harga: Rp" << hitungTotalRekursif(terpilih, n) << "\n";
+    cout << "\n\033[1mTotal Harga: Rp" << hitungTotalRekursif(terpilih, n) << "\033[0m\n";
 }
 
 int hitungTotalRekursif(const Menu daftar[], int n){
