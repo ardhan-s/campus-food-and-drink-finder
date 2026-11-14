@@ -110,8 +110,8 @@ void calculateSummary(const Menu daftar[], int jumlahData) {
     }
 
     cout << "Jumlah menu      : " << jumlahData << "\n";
-    cout << "Rata-rata harga  : Rp" << totalHarga / jumlahData << "\n";
-    cout << "Rata-rata rating : " << totalRating / jumlahData << "\n";
+    cout << "Rata-rata harga  : Rp" << fixed << setprecision(0) << (double)totalHarga / jumlahData << "\n";
+    cout << "Rata-rata rating : " << fixed << setprecision(2) << totalRating / jumlahData << "\n";
     cout << "Termurah         : " << daftar[idxMurah].nama << " (Rp" << daftar[idxMurah].harga << ")\n";
     cout << "Termahal         : " << daftar[idxMahal].nama << " (Rp" << daftar[idxMahal].harga << ")\n";
 }

@@ -30,19 +30,13 @@ int main() {
         cout << "\033[1;36m|\033[0m  \033[1;33m[3]\033[0m Ringkasan (Rata-rata, Termurah, Termahal)       \033[1;36m|\033[0m\n";
         cout << "\033[1;36m|\033[0m  \033[1;33m[4]\033[0m Urutkan Menu (Harga/Rating)                     \033[1;36m|\033[0m\n";
         cout << "\033[1;36m|\033[0m  \033[1;33m[5]\033[0m Cari Menu (ID/Nama/Kategori)                    \033[1;36m|\033[0m\n";
-        cout << "\033[1;36m|\033[0m  \033[1;33m[6]\033[0m Hitung Total Pilihan Menu                       \033[1;36m|\033[0m\n";
+        cout << "\033[1;36m|\033[0m  \033[1;33m[6]\033[0m Pilih Menu Kamu!                                \033[1;36m|\033[0m\n";
         cout << "\033[1;36m|\033[0m  \033[1;33m[7]\033[0m What Can I Eat With My Budget?                  \033[1;36m|\033[0m\n";
         cout << "\033[1;36m+======================================================+\033[0m\n";
         cout << "\033[1;36m|\033[0m  \033[1;31m[0]\033[0m Keluar                                          \033[1;36m|\033[0m\n";
         cout << "\033[1;36m+======================================================+\033[0m\n";
         cout << "\033[1m> Masukkan pilihan Anda: \033[0m";
         cin >> pilihan;
-
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            pilihan = -1;
-        }
 
         switch (pilihan) {
             case 1:
@@ -112,7 +106,7 @@ int main() {
                     }
                 }
 
-                cout << "\n\033[1;32m[OK] Hasil Pengurutan:\033[0m\n";
+                cout << endl;
                 displayData(daftarMenu, jumlahData);
                 cout << endl;
                 break;
@@ -145,7 +139,7 @@ int main() {
                         break;
                     } else if (pilihan2 == "Kategori" || pilihan2 == "kategori") {
                         string kategori;
-                        cout << "\033[1m> Masukkan Kategori: \033[0m";
+                        cout << "\033[1m> Pilih Kategori (1.Meal 2.Snack 3.Drink 4.Coffee 5.Other): \033[0m";
                         getline(cin, kategori);
                         cout << endl;
                         searchByKategori(daftarMenu, jumlahData, kategori);
@@ -159,7 +153,7 @@ int main() {
             }
 
             case 6:
-                cout << "\n\033[1;36m-- HITUNG TOTAL PILIHAN MENU ---------------------------\033[0m\n";
+                cout << "\n\033[1;36m-- PILIH MENU KAMU! ---------------------------\033[0m\n";
                 hitungTotalPilihan(daftarMenu, jumlahData);
                 cout << endl;
                 break;
@@ -169,22 +163,8 @@ int main() {
                 int budget;
                 cout << "\033[1m> Masukkan Budget Anda (Rp): \033[0m";
                 cin >> budget;
-
-                Menu hasilBudget[maxData];
-                int jumlahHasil = 0;
-
-                for (int i = 0; i < jumlahData; i++) {
-                    if (daftarMenu[i].harga <= budget) {
-                        hasilBudget[jumlahHasil++] = daftarMenu[i];
-                    }
-                }
-
-                if (jumlahHasil == 0) {
-                    cout << "\n\033[31m[!] Tidak ada menu yang sesuai dengan budget Rp" << budget << ".\033[0m\n";
-                } else {
-                    cout << "\n\033[1;32m[OK] Ditemukan " << jumlahHasil << " menu yang masuk budget Anda:\033[0m\n";
-                    displayData(hasilBudget, jumlahHasil);
-                }
+                cout << endl;
+                searchByBudget(daftarMenu, jumlahData, budget);
                 cout << endl;
                 break;
             }
