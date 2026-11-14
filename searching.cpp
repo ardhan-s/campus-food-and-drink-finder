@@ -3,7 +3,19 @@
 #include "searching.hpp"
 #include "menu.hpp"
 using namespace std;
-
+bool mengandung(const string teks, const string kata) {
+    int n = teks.length();
+    int m = kata.length();
+    if (m == 0) return true;
+    for (int i = 0; i + m <= n; i++) {
+        int j = 0;
+        while (j < m && teks[i + j] == kata[j]) {
+            j++;
+        }
+        if (j == m) return true;
+    }
+    return false;
+}
 void searchByID(const Menu daftar[], int jumlahData, int targetID){
     for ( int i = 0; i < jumlahData; i++ ) {
         if ( daftar[i].id == targetID ) {
