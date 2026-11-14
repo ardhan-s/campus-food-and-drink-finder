@@ -6,6 +6,7 @@ main.exe
 *.exe
 *.o
 *.out
+data_menu.txt
 
 # File sistem bawaan macOS
 .DS_Store
