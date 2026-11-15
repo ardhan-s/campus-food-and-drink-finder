@@ -86,10 +86,10 @@ void searchByKategori(const Menu daftar[], int jumlahData, string kategori) {
     }
 }
 
-void searchByBudget(const Menu daftar[], int jumlahData, int maxBudget){
+void searchByBudget(const Menu daftar[], int jumlahData, int maxBudget) {
     bool found = false;
-    for ( int i = 0; i < jumlahData; i++ ) {
-        if ( daftar[i].harga <= maxBudget ) {
+    for (int i = 0; i < jumlahData; i++) {
+        if (daftar[i].harga <= maxBudget) {
             if (!found) {
                 cout << "\033[1;33m" << left << setw(6) << "ID" << setw(24) << "Nama Menu" << setw(12) << "Kategori" << setw(12) << "Harga" << setw(9) << "Rating" << "Label\033[0m\n";
                 cout << "\033[90m----------------------------------------------------------------------\033[0m\n";
@@ -107,6 +107,6 @@ void searchByBudget(const Menu daftar[], int jumlahData, int maxBudget){
         }
     }
     if (!found) {
-        cout << "\033[33Tidak ada menu yang sesuai dengan budget yang ditentukan.\033[0m" << endl;
+        cout << "\033[33m[!] Tidak ada menu yang sesuai dengan budget yang ditentukan.\033[0m" << endl;
     }
 }

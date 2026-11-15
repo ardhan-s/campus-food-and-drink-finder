@@ -38,6 +38,14 @@ int main() {
         cout << "\033[1m> Masukkan pilihan Anda: \033[0m";
         cin >> pilihan;
 
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "\n\033[31m[!] Pilihan tidak valid! Silakan masukkan angka 0 - 7.\033[0m\n\n";
+            pilihan = -1;
+            continue;
+        }
+        
         switch (pilihan) {
             case 1:
                 cout << "\n\033[1;36m-- TAMBAH MENU BARU ------------------------------------\033[0m\n";
