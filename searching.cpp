@@ -4,6 +4,20 @@
 #include "menu.hpp"
 using namespace std;
 
+bool mengandung(const string& teks, const string& kata) {
+    int n = teks.length();
+    int m = kata.length();
+    if (m == 0) return true;
+    for (int i = 0; i + m <= n; i++) {
+        int j = 0;
+        while (j < m && teks[i + j] == kata[j]) {
+            j++;
+        }
+        if (j == m) return true;
+    }
+    return false;
+}
+
 void searchByID(const Menu daftar[], int jumlahData, int targetID){
     for ( int i = 0; i < jumlahData; i++ ) {
         if ( daftar[i].id == targetID ) {
@@ -22,7 +36,7 @@ void searchByID(const Menu daftar[], int jumlahData, int targetID){
 void searchByNama(const Menu daftar[], int jumlahData, string keyword){
     bool found = false;
     for ( int i = 0; i < jumlahData; i++ ) {
-        if ( daftar[i].nama.find(keyword) != string::npos ) {
+        if (mengandung(daftar[i].nama, keyword)) {
             if (!found) {
                 cout << "\n\033[1;36m-- MENU DITEMUKAN --------------------------------------\033[0m\n";
             }

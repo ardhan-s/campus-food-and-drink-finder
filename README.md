@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-2EA44F?style=for-the-badge)
 ![Interface](https://img.shields.io/badge/Interface-CLI%20Terminal-orange?style=for-the-badge)
 
-> **Bingung mau makan apa hari ini di kampus? Atau dompet lagi mode hemat di akhir bulan?**
+> **Bingung mau makan apa hari ini di kampus? Atau dompet lagi mode hemat di akhir bulan?** 
 > 
 > **Campus Food & Drink Finder** hadir sebagai solusi praktis berbasis konsol (*Command Line Interface*) yang dibangun menggunakan **C++** untuk membantu mahasiswa menemukan, membandingkan, hingga menghitung estimasi jajanan dan makanan terbaik di sekitar kampus.
 
